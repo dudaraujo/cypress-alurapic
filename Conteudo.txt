@@ -1,0 +1,125 @@
+O Cypress é um framework para automação de testes end-to-end, que utiliza o JavaScript como linguagem de programação. 
+Para este curso, precisaremos instalar duas ferramentas: o NodeJS, necessário para executar código JavaScript e o Visual Studio Code ou VSC, 
+editor que usamos para escrever código.
+
+NodeJS
+Caso já tenha feito algum curso anterior de JavaScript, o NodeJS pode já estar instalado. 
+Se não tiver certeza, é possível conferir com os seguintes passos:
+
+1) Abra uma janela do terminal em seu computador. Isso pode ser feito da seguinte forma:
+
+Windows: Você pode acessar a busca no menu inicial e procurar por Prompt de Comando, ou acessar via 
+Menu Iniciar > Sistema do Windows > Prompt de Comando.
+
+MacOs: O Terminal está disponível no menu de Aplicações, dentro da pasta de Utilitários.
+
+Linux (Ubuntu): O Terminal está disponível no menu de Programas/Aplicações. Caso não localize, pode estar dentro da pasta Utilitários.
+
+
+2) No terminal, digite node --version ou node -v - caso retorne um número de versão, como por exemplo, v16.13.1, o NodeJS já está instalado.
+
+Caso precise instalar, siga as instruções para cada sistema operacional que estão na página inicial do NodeJS . 
+Este curso foi desenvolvido usando a versão 16.13.1.
+
+O site do NodeJS oferece duas opções para download, a LTS e a "current" (atual), 
+conforme imagem abaixo. Você pode escolher a versão LTS (Long Term Support, ou Suporte a Longo Prazo) e 
+clicar no botão correspondente para baixar e instalar normalmente como qualquer outro programa.
+
+Para iniciar o projeto, vamos usar um comando que é o npm init, dentro dessa pasta que estamos. 
+No meu caso, está “C:\Alura\primeiro-projeto”. Então eu vou digitar npm init.
+
+Quando iniciamos um projeto numa pasta, ele vai começar a fazer alguns questionamentos, 
+algumas perguntas para criar o projeto, criar o arquivo “package.json”, que todo projeto com Node tem.
+
+Comando de teste, é o comando que vai ser executado quando você pedir para rodar o script. 
+Então vamos colocar aqui nesse ponto o seguinte comando, npx cypress open. Esse vai ser o nosso comando para rodar o teste.
+
+Agora, para poder usar o Cypress, precisamos fazer a instalação mesmo do Cypress. Para fazer a instalação do Cypress, 
+vamos usar o comando npm i cypress --save--include=dev. Esse parâmetro --include=dev é para indicar que é uma dependência de desenvolvimento.
+
+
+ As dependências de desenvolvimento não precisam ir para produção, então nós utilizamos para indicar isso, para não ter que empacotar essas bibliotecas junto. 
+
+ Agora para poder executar e ver a interface gráfica do Cypress, precisamos rodar o comando que vai abrir o script de teste. Para isso vamos digitar npm run test. 
+ Pode ser que nessa primeira vez ele demore um pouco para abrir, 
+ ele já indica para nós que ele está rodando o script npx cypress open. E aqui ele já deu uma mensagem no terminal, que é a primeira vez que eu estou usando a versão 9.1.1.
+
+
+ARQUIVOS 
+
+1 - cypress.config.json, onde incluiremos algumas configurações do projeto.
+
+2 - O arquivo index.js que utilizamos para importar os arquivos de comando, por exemplo, agora é nomeado como e2e.js.
+
+Para que sejam criados os arquivos de exemplo no projeto, temos que solicitar isso na interface do cypress, 
+no botão "Scaffold example specs"
+
+Documentação do Cypress:
+https://docs.cypress.io/guides/getting-started/installing-cypress#What-you-ll-learn
+
+
+-------------- CORRIGINDO O ERRO DE TIME OUT--------------
+Mesmo seguindo todas as configurações passo a passo, é comum em algumas máquinas ocorrer na primeira execução do Cypress o erro: “Command timed out after 30000 miliseconds”. Para isso, temos duas alternativas:
+
+1) Executar novamente, com o comando npm run test ou npx cypress open;
+
+2) Aumentar esse tempo de verificação no arquivo verify.js que fica no caminho: node_modules\cypress\lib\tasks
+Localize a constante VERIFY_TEST_RUNNER_TIMEOUT_MS e altere de 30000 para 100000;
+
+
+
+
+https://alura-fotos.herokuapp.com/#/home/signup
+
+https://cursos.alura.com.br/extra/alura-mais/o-que-e-continuous-testing--c1144
+
+
+
+
+
+------------- npx cypress open -------- comando que definimos para rodar o teste 
+
+--------------npx cypress run -------- rodar os testes sem abrir a interface gráfica 
+
+------------ npm i -D mochawesome --------- extensão para relatórios mais agradáveis visualmente 
+
+-----------  npx cypress run --reporter mochawesome -------- rodar o teste passando quem será o reporter 
+
+------------- npx cypress run --record --key 6d12403a-9a91-485e-8a05-1d2847b56845 ------- comando para rodar o dashboard. Esse log muda de acordo com o projeto
+
+------------ it.only------------------ na hora que roda a switch de testes, rodar apenas oq tover only 
+
+
+
+CRIAND COMANDO PERSONALIZADO
+
+* Comandos personalizados podem ser usados para englobar todo um caso de teste e você não precisar ficar 
+escrevendo ele toda hora, auxilia na manutanção e refatoração também. 
+
+* Para fazer isso, vamos criar um novo arquivo na pasta "support", nesse caso criamos o arquivo 'gui_commands'.
+Depois, criar o comando, e importa-lo em e2e.js.
+Depois, chama-lo no aquivo principal e passar os parâmetro. 
+
+
+
+CRIANDO MASSA DE TESTES (exemplo para criar usuários)
+1 - Vá na pasta fixtures e crie um arquivo .json 
+2 - Nesse aquivo, digite um array com todos os usuários que você quiser 
+3 - No arquivo principal de testes, declare uma variavel com o nome do arquivo criado e faça uma requisição dela
+4 - Coloque o comando de criar usuários em um forEach (ele vai rodar para todos os itens do array).
+
+
+REQUISIÇÕES EM APIs REST
+1 - é uma boa prática separar o spec de testes de interface do spec de testes em api
+2 - usamos o cy.request e dizemos qual o método e qual a url.
+3 - então, dizemos o que esperamos receber da API
+4 - vide api-alurapic.cy.js
+
+
+TESTANDO DADOS SENSÍVEIS 
+* O correto nessas situaçãoes é criar variáveis de ambiente e colocar o arquivo no git ignore, para ele não subir junto.
+* No exemplo desse projeto, foi criado o orquivo cypress.env.json para declarar essas variáveis de ambiente 
+* Dentro desse arquivo foi colocado o login e senha do flavio 
+
+Incluir parâmetro { logs: false } na função que faz a digitação da senha, para não demonstrar na interface 
+gráfica do Cypress o valor digitado.
