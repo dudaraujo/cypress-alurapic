@@ -1,5 +1,7 @@
 //const { it } = require("mocha");  NÃO SEI OQ É ISSO, APARECEU DO NADA 
 
+const { it } = require('mocha');
+
 
 
 
@@ -73,12 +75,16 @@ describe('User register and login', () => {
     const usuarios = require('../../fixtures/usuarios.json'); //pegando os arrays com todos os usuários
     usuarios.forEach(usuario => { //para cada usuário que está no array, eu realizo o teste a seguir. (Comando personalizado)
 
-        it.only('check register new user' + usuario.userName, () => {
+        it('check register new user' + usuario.userName, () => {
             cy.register(usuario.email, usuario.fullName, usuario.userName, usuario.password); //pegando cada informação do array de usuario, e passando ela por parametro para gui_commands
         }
     )})
     
 
-    
+    it.only('check home message', () => {
+        cy.contains('ap-vmessage', 'User name is required!').should('be.visible');
+        cy.contains('ap-vmessage','Password is required!').should('be.visible');
+        cy.get('button[type="submit"]').should('be.disabled');
+    })
 
 }) 

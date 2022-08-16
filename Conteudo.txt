@@ -123,3 +123,7 @@ TESTANDO DADOS SENSÍVEIS
 
 Incluir parâmetro { logs: false } na função que faz a digitação da senha, para não demonstrar na interface 
 gráfica do Cypress o valor digitado.
+
+
+ORGANIZANADO TESTES 
+
