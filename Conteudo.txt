@@ -127,3 +127,6 @@ gráfica do Cypress o valor digitado.
 
 ORGANIZANADO TESTES 
 
+É importante separar os casos de teste por funcionalidade.
+Exemplo, um arquivo só para Login, outro só para Registro, outro só para testes da interface da home...
+
