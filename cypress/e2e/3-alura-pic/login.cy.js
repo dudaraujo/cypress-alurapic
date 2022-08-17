@@ -1,5 +1,4 @@
-const cypress = require("cypress")
-//const { forEach } = require("cypress/types/lodash")
+const { it } = require('mocha');
 
 describe('User login', () => {
     beforeEach(() => {

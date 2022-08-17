@@ -1,4 +1,4 @@
-const cypress = require("cypress")
+const { it } = require('mocha');
 
 describe('User register', () => {
     beforeEach(() => {
