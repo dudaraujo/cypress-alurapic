@@ -130,3 +130,28 @@ ORGANIZANADO TESTES
 É importante separar os casos de teste por funcionalidade.
 Exemplo, um arquivo só para Login, outro só para Registro, outro só para testes da interface da home...
 
+
+EVITANDO FLAKY TESTES
+
+*Evitar colcoar tempo de resposta nos testes (Trabalhar orientado a tempo data e hora)
+
+
+GANHAR VELOCIDADE NOS TESTES
+* Quando utilizamos o cy.visit, a página tem que ficar recarregando a página toda hora 
+Para melhorar isso, podemos definir uma base URL no arquivo cypress.cofig.js
+E no arquivo de testes usamos cy.visit("/")
+
+
+COMO ESCONDER AS SENHAS DO LOG QUANDO EXECUTAMOS O TESTES
+Usar {log: false}
+
+https://docs.cypress.io/guides/references/best-practices
+
+
+
+
+BOAS PRÁTICAS COM MOCKS 
+*As vezes precisamos simular casos, como uma resposta de requisiçao diferente de 200
+Nesse caso, o usuário não pode conseguir fazer login. 
+Se a API estiver dando sempre sucesso (200) não vamos conseguir testar isso, então 
+utilizamos o Mocks como um ambiente controlado. 

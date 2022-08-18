@@ -1,11 +1,10 @@
-//const cypress = require("cypress");
-//const { describe } = require("mocha");
-
-
 
 describe('search photos and data', () => {
     
-    it('search flavios photos', () => {
+    it.only('search flavios photos', () => {
+
+        //const tempoEsperado = Math.random() * 2000; flaky test
+
         cy.request({ //fazendo uma requisição do método GET utilizando essa url
             method: 'GET',
             url: 'https://apialurapic.herokuapp.com/flavio/photos'
@@ -14,11 +13,11 @@ describe('search photos and data', () => {
             expect(res.body).is.not.empty  //que o corpo da requisição, seu conteúdo, não venha vazio
             expect(res.body[0]).to.have.property('description') //espero que tenha a propiedade "descrição" no item de posição 0 do array de fotos 
             expect(res.body[0].description).to.be.equal('Farol iluminado')
-
+            //expect(res.duration).to.be.lte(tempoEsperado)  //lte = menor que  flaky test
         })
     })
 
-    it.only('flavios login', () => {
+    it('flavios login', () => {
         cy.request({
             method: 'POST',
             url: 'https://apialurapic.herokuapp.com/user/login',

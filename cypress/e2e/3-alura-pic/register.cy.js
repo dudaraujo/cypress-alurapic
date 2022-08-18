@@ -2,7 +2,8 @@ const { it } = require('mocha');
 
 describe('User register', () => {
     beforeEach(() => {
-        cy.visit('https://alura-fotos.herokuapp.com');
+        //cy.visit('https://alura-fotos.herokuapp.com'); 
+        cy.visit("/") //definimos a base url em cypress.config.js
     })
 
     it('check validation messages', () => {

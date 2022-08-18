@@ -4,6 +4,10 @@ describe('User login', () => {
     beforeEach(() => {
 
         cy.visit('https://alura-fotos.herokuapp.com');
+
+      //  cy.intercept('POST', 'https://apialurapic.herokuapp.com/user/login', { //interceptando o que a api retona pra simula rum erro
+     //       stausCode: 400
+       // }).as('stubPost') //dando nome pra esse intercept 
     })
 
     // it('check valid user login', () => {
@@ -23,7 +27,9 @@ describe('User login', () => {
     // })
 
     it('check valid user login', () => {
-        cy.login('flavio', '123'); //Comando criado, passando paametros
+        //abaixo estou passando as variáveis de ambiente 
+        cy.login(Cypress.env('userName'), Cypress.env('password')); //Comando criado, passando paametros
+       // cy.wait('@stubPost') //pedindo pra esperar enquanto a API está sendo interceptada 
         cy.contains('a', '(Logout)').should('be.visible');
     })
     
