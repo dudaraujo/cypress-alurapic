@@ -2,6 +2,8 @@
 
 
 const { it } = require('mocha');
+//const { usuarios } = require('../../fixtures/usuarios.json');
+import  usuarios  from '../../fixtures/usuarios.json';
 
 
 
@@ -18,10 +20,10 @@ describe('UX Home', () => {
         cy.get('button[type="submit"]').should('be.disabled');
     })
 
-   // const usuarios = require('../../fixtures/usuarios.json');
-    it('check enabled button on login screen', () => {
-        cy.get('input[formcontrolname="userName"]').type("Flavio");
-        cy.get('input[formcontrolname="password"]').type('123');
+   // const usuarios = require('../../fixtures/usuarios.json')
+    it.only('check enabled button on login screen', () => {
+        cy.get('input[formcontrolname="userName"]').type(usuarios[0].userName);
+        cy.get('input[formcontrolname="password"]').type(usuarios[0].password, {log: false});
         cy.get('button,[type="submit"]').should('be.enabled');
     })
 
