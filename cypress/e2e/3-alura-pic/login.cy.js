@@ -28,7 +28,7 @@ describe('User login', () => {
 
     it('check valid user login', () => {
         //abaixo estou passando as variáveis de ambiente 
-        cy.login(Cypress.env('userName'), Cypress.env('password')); //Comando criado, passando paametros
+        cy.login(Cypress.env('userName'), Cypress.env('password')); //Comando criado, passando parametros
        // cy.wait('@stubPost') //pedindo pra esperar enquanto a API está sendo interceptada 
         cy.contains('a', '(Logout)').should('be.visible');
     })
