@@ -156,4 +156,3 @@ Nesse caso, o usuário não pode conseguir fazer login.
 Se a API estiver dando sempre sucesso (200) não vamos conseguir testar isso, então 
 utilizamos o Mocks como um ambiente controlado. 
 
-testando commit. 

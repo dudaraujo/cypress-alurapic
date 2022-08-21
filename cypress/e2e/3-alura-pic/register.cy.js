@@ -3,11 +3,13 @@ const { it } = require('mocha');
 describe('User register', () => {
     beforeEach(() => {
         //cy.visit('https://alura-fotos.herokuapp.com'); 
-        cy.visit("/") //definimos a base url em cypress.config.js
+        //base url definida em cypress.config.js
+        cy.visit("/") 
     })
 
     it('check validation messages', () => {
-        cy.contains('a', 'Register now').click(); //verificando se existe um elemento "a" e se nesse elemento está escrito "Register now"
+        //verificando se existe um elemento "a" e se nesse elemento está escrito "Register now"
+        cy.contains('a', 'Register now').click(); 
         cy.contains('button', 'Register').click();
         cy.contains('ap-vmessage', 'Email is required!').should('be.visible');
         cy.contains('button', 'Register').click();

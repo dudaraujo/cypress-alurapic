@@ -16,7 +16,8 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
-import './gui_commands' // Importando o comando que criamos emm gui_commands
+// Importando o comando que criamos emm gui_commands
+import './gui_commands' 
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
